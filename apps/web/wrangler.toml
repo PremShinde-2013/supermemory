@@ -1,0 +1,28 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "supermemory-web"
+compatibility_date = "2025-03-12"
+pages_build_output_dir = "./build/client"
+compatibility_flags = ["nodejs_compat"]
+
+[[kv_namespaces]]
+binding = "METADATA_KV"
+id = "c7346cc4dce240f1a6d17bd7e416ff98"
+
+[[kv_namespaces]]
+binding = "ENCRYPTED_TOKENS"
+id = "fad15f12bad94b84aeb15c8b1e95107e"
+preview_id = "fad15f12bad94b84aeb15c8b1e95107e"
+
+[[r2_buckets]]
+binding = "IMAGES_BUCKET"
+bucket_name = "supermemory-images"
+
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "3a377d1b9c084e698ee201f10dfa8131"
+localConnectionString = "postgres://postgres:postgres@localhost:5432/supermemorylocal?sslmode=require"
+
+[placement]
+mode = "smart"
+

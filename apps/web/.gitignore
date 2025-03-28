@@ -1,0 +1,18 @@
+node_modules
+
+/.cache
+/build
+.env
+.dev.vars
+
+.wrangler
+
+.env.*
+.env
+.dev.vars 
+*.vars
+bun.lockb
+
+# Million Lint
+.million
+database.sql

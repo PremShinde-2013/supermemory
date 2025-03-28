@@ -1,0 +1,56 @@
+name = "supermemory-backend"
+main = "src/index.tsx"
+compatibility_date = "2024-10-11"
+compatibility_flags = [ "nodejs_compat" ]
+
+[assets]
+directory = "./public/"
+binding = "ASSETS"
+
+
+[observability]
+enabled = true
+
+[placement]
+mode = "smart"
+
+[ai]
+binding = "AI"
+
+[[workflows]]
+name = "content-workflow-supermemory"
+binding = "CONTENT_WORKFLOW"
+class_name = "ContentWorkflow"
+
+
+[[kv_namespaces]]
+binding= "MD_CACHE"
+id = "23a995b43dd14fe4bfe9ccee98dace04"
+preview_id = "23a995b43dd14fe4bfe9ccee98dace04"
+
+[[kv_namespaces]]
+binding = "ENCRYPTED_TOKENS"
+id = "fad15f12bad94b84aeb15c8b1e95107e"
+preview_id = "fad15f12bad94b84aeb15c8b1e95107e"
+
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "3a377d1b9c084e698ee201f10dfa8131"
+localConnectionString = "postgres://postgres:postgres@localhost:5432/supermemorylocal?sslmode=require"
+
+[[unsafe.bindings]]
+name = "EMAIL_LIMITER"
+type = "ratelimit"
+namespace_id = "2114284"
+simple = { limit = 1, period = 60 }
+
+tail_consumers = [{service = "supermemory-backend-tail"}]
+
+[[durable_objects.bindings]]
+name = "RATE_LIMITER"
+class_name = "DurableObjectRateLimiter"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["DurableObjectRateLimiter"]
+
